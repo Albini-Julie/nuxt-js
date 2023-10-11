@@ -33,7 +33,7 @@ import Title from "../../scss/components/elements/e_title.vue";
             <!--Photo-->
             <img
               class="e-bloc__image"
-              src="@/assets/client.jpg"
+              src="/client.jpg"
               alt="image client"
             />
             <div>
@@ -61,7 +61,7 @@ import Title from "../../scss/components/elements/e_title.vue";
         </div>
       </div>
       <!--Image fast food-->
-      <img src="@/assets/fastfoodMenu.jpg" alt="image d'un menu de fast food" />
+      <img src="/fastfoodMenu.jpg" alt="image d'un menu de fast food" />
     </div>
   </div>
 </template>

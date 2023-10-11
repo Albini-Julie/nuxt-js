@@ -10,7 +10,7 @@ import Title from "../../scss/components/elements/e_title.vue";
     <div class="e-bloc__fond"></div>
     <!--Image du burger-->
     <div class="e-bloc__image">
-      <img src="@/assets/burger.png" alt="image d'un burger" />
+      <img src="/burger.png" alt="image d'un burger" />
     </div>
     <!--Titre et description-->
     <div class="e-bloc__infos">

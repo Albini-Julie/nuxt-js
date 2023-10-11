@@ -9,7 +9,7 @@ import Bouton from '../../scss/components/elements/Bouton_fleche.vue'
     <!--Première colonne-->
     <div class="e-bloc__1c">
       <!--Logo-->
-      <img src="../../assets/logo.png" />
+      <img src="/logo.png" />
       <!--Paragraphe-->
       <p class="e-bloc__text --first">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo libero viverra dapibus odio
