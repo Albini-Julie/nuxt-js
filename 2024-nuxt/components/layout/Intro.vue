@@ -1,27 +1,27 @@
 <script setup>
 //Import des éléments utiles au codage
-import { onMounted, ref, computed } from 'vue'
-import Title from '../../scss/components/elements/e_title.vue'
-import Bouton from '../../scss/components/elements/e-Bouton.vue'
-import Icon from '../../scss/components/elements/Bouton_fleche.vue'
-import Fleche from '../../scss/components/icons/icons-elements/fleche_grise.vue'
-import Card from '../../scss/components/PetiteCard.vue'
-import { client } from '@/utils/axios'
+import { onMounted, ref, computed } from "vue";
+import Title from "../../scss/components/elements/e_title.vue";
+import Bouton from "../../scss/components/elements/e-Bouton.vue";
+import Icon from "../../scss/components/elements/Bouton_fleche.vue";
+import Fleche from "../../scss/components/icons/icons-elements/fleche_grise.vue";
+import Card from "../../scss/components/PetiteCard.vue";
+import { client } from "@/utils/axios";
 
-const recipes = ref([])
+const recipes = ref([]);
 
 const getRecipes = async () => {
-  const response = await client.get('/recipes')
-  return response.data
-}
+  const response = await client.get("/recipes");
+  return response.data;
+};
 
 const introRecipes = computed(() => {
-  return recipes.value.filter((recipe) => recipe.image_url.includes('png'))
-})
+  return recipes.value.filter((recipe) => recipe.image_url.includes("png"));
+});
 
 onMounted(async () => {
-  recipes.value = await getRecipes()
-})
+  recipes.value = await getRecipes();
+});
 </script>
 
 <template>
@@ -32,7 +32,7 @@ onMounted(async () => {
       <div class="e-intro__delivery">
         <Title class="e-delivery__title" title="h5" content="Bike Delivery" />
         <div class="e-delivery__image">
-          <img src="@/assets/livreur.jpg" alt="icon d'un livreur" />
+          <img src="/livreur.jpg" alt="icon d'un livreur" />
         </div>
       </div>
       <!--Titre-->
@@ -41,13 +41,18 @@ onMounted(async () => {
         <Title title="h1" content="Delivery" />
         <div class="e-intro__title --end">
           <Title title="h1" content="In " />
-          <Title class="e-intro__title --title" title="h1" content="Your City" />
+          <Title
+            class="e-intro__title --title"
+            title="h1"
+            content="Your City"
+          />
         </div>
       </div>
       <!--Description-->
       <p class="e-intro__description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo, sed proin amet a
-        vestibulum enim volutpat lacus. Volutpat arcu sit sed tortor etiam volutpat ipsum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo, sed
+        proin amet a vestibulum enim volutpat lacus. Volutpat arcu sit sed
+        tortor etiam volutpat ipsum.
       </p>
       <!--Boutons-->
       <div class="e-intro__boutons">
@@ -69,7 +74,7 @@ onMounted(async () => {
       <div class="e-intro__fond"></div>
       <div v-for="recipe in introRecipes" :key="recipe.recipe_id">
         <Card
-          :image="'src/assets/' + recipe.image_url"
+          :image="'/' + recipe.image_url"
           description="image d'un burger"
           :text="recipe.recipe_description"
           :content="recipe.recipe_name"
@@ -115,7 +120,11 @@ onMounted(async () => {
   }
 
   &__fond {
-    background: linear-gradient(200deg, #d9d9d9 -18.39%, rgba(217, 217, 217, 0) 89.51%);
+    background: linear-gradient(
+      200deg,
+      #d9d9d9 -18.39%,
+      rgba(217, 217, 217, 0) 89.51%
+    );
     border-radius: rem(30);
     height: 100%;
     margin-left: 25%;

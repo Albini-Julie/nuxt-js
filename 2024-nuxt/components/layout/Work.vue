@@ -18,7 +18,7 @@ import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue"
         <!--Image-->
         <img
           class="e-bloc__image --haut"
-          src="@/assets/ordinateur.jpg"
+          src="/ordinateur.jpg"
           alt="image ordinateur"
         />
         <!--Titre-->
@@ -47,7 +47,7 @@ import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue"
         <!--Image-->
         <img
           class="e-bloc__image --bas"
-          src="@/assets/food.jpg"
+          src="/food.jpg"
           alt="image nourriture"
         />
       </div>
@@ -56,11 +56,7 @@ import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue"
       <!--Section sac-->
       <div class="e-bloc__sections--1 --end">
         <!--image-->
-        <img
-          class="e-bloc__image --haut"
-          src="@/assets/bag.jpg"
-          alt="image sacs"
-        />
+        <img class="e-bloc__image --haut" src="/bag.jpg" alt="image sacs" />
         <!--Titre-->
         <Title class="e-bloc__title" title="h4" content="deliver" />
         <!--Description-->

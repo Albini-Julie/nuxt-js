@@ -1,40 +1,40 @@
 <script setup>
 //import des éléments utiles au codage
-import { onMounted, ref, computed } from 'vue'
-import GrandCards from '../../scss/components/GrandCard.vue'
-import Bouton from '../../scss/components/elements/e-Bouton.vue'
-import TitlesSections from '../../scss/components/titles_section.vue'
-import { client } from '@/utils/axios'
+import { onMounted, ref, computed } from "vue";
+import GrandCards from "../../scss/components/GrandCard.vue";
+import Bouton from "../../scss/components/elements/e-Bouton.vue";
+import TitlesSections from "../../scss/components/titles_section.vue";
+import { client } from "@/utils/axios";
 
-const recipes = ref([])
+const recipes = ref([]);
 
 const getRecipes = async () => {
-  const response = await client.get('/recipes')
-  return response.data
-}
+  const response = await client.get("/recipes");
+  return response.data;
+};
 
-const gridPage = ref(1)
+const gridPage = ref(1);
 
 const jpgRecipes = computed(() => {
-  return recipes.value.filter((recipe) => recipe.image_url.includes('jpg'))
-})
+  return recipes.value.filter((recipe) => recipe.image_url.includes("jpg"));
+});
 
 const gridRecipes = computed(() => {
-  const recipesByPage = 6
-  return jpgRecipes.value.slice(0, gridPage.value * recipesByPage)
-})
+  const recipesByPage = 6;
+  return jpgRecipes.value.slice(0, gridPage.value * recipesByPage);
+});
 
 const moreRecipesToShow = computed(() => {
-  return gridRecipes.value.length < jpgRecipes.value.length
-})
+  return gridRecipes.value.length < jpgRecipes.value.length;
+});
 
 const seeMoreRecipe = () => {
-  gridPage.value++
-}
+  gridPage.value++;
+};
 
 onMounted(async () => {
-  recipes.value = await getRecipes()
-})
+  recipes.value = await getRecipes();
+});
 </script>
 
 <template>
@@ -46,7 +46,7 @@ onMounted(async () => {
       <GrandCards
         v-for="recipe in gridRecipes"
         :key="recipe.recipe_id"
-        :image="'src/assets/' + recipe.image_url"
+        :image="'/' + recipe.image_url"
         :description="recipe.recipe_description"
         :content="recipe.recipe_name"
         :note="recipe.rating"

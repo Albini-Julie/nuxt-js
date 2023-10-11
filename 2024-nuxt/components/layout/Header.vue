@@ -9,7 +9,7 @@ import Icon from "../../scss/components/elements/bouton_fleche.vue";
     <!--logo-->
     <img
       class="e-header__image"
-      src="../../assets/logo.png"
+      src="/logo.png"
       alt="logo du site web"
     />
     <!--Navigation-->
