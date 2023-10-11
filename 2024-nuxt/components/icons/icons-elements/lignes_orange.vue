@@ -1,0 +1,20 @@
+<template>
+  <svg
+    width="541"
+    height="282"
+    viewBox="0 0 541 282"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-[541px] h-[280.14px]"
+    preserveAspectRatio="none"
+  >
+    <path
+      d="M527 269.5C413.5 295.5 247.082 270.657 211.5 229.5C148.5 156.629 277.5 7.50034 13.5 7.5"
+      stroke="#F48E28"
+      stroke-width="3"
+      stroke-dasharray="5 8"
+    ></path>
+    <circle cx="533.5" cy="267.5" r="7.5" fill="#F48E28"></circle>
+    <circle cx="7.5" cy="7.5" r="7.5" fill="#F48E28"></circle>
+  </svg>
+</template>
