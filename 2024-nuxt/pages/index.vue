@@ -1,4 +1,21 @@
-<script setup></script>
+<script lang="ts" setup>
+/*useHead({
+  title: "Recettes App",
+  meta: [{ name: "description", content: "Le sites de toutes vos recettes" }],
+  bodyAttrs: {
+    class: "test",
+  },
+  script: [{ innerHTML: "console.log('Bienvenue sur Recette App')" }],
+});*/
+useSeoMeta({
+  title: "Recettes App",
+  ogTitle: "Recettes App",
+  description: "Le sites de toutes vos recettes",
+  ogDescription: "Le sites de toutes vos recettes",
+  ogImage: "/logo.png",
+  twitterCard: "summary_large_image",
+});
+</script>
 
 <template>
   <div class="e-bloc">
@@ -8,7 +25,7 @@
     <div class="e-bloc__infos">
       <Infos />
     </div>
-    <div class="e-bloc_product">
+    <div class="e-bloc__product">
       <Product />
     </div>
     <div class="e-bloc__services">
