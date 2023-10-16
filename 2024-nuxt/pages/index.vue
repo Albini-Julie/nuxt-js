@@ -42,7 +42,7 @@ console.log(home);
       />
     </div>
     <div class="e-bloc__infos">
-      <Infos />
+      <Infos v-if="home" :cards="home.data.infos_card" />
     </div>
     <div class="e-bloc__product">
       <Product />

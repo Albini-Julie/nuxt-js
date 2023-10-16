@@ -38,8 +38,8 @@ const className2 = computed(() => ({
   <div class="e-bloc" :class="className">
     <div class="e-bloc__donnees" :class="className2">
       <Icon size="small" couleur="orange" :icon="icon" />
-      <Title class="e-bloc__title" title="h5" :content="contentTitle" />
-      <p class="e-bloc__text">{{ contentDescription }}</p>
+      <h5><PrismicRichText class="e-bloc__title" :field="contentTitle" /></h5>
+      <PrismicRichText class="e-bloc__text" :field="contentDescription" />
     </div>
   </div>
 </template>
@@ -53,7 +53,13 @@ const className2 = computed(() => ({
   flex-direction: column;
   padding-top: rem(28);
   padding-bottom: rem(28);
-  flex: 1;
+  min-width: rem(520);
+
+  h5 {
+    font-size: $regular-font-size;
+    font-family: $primary-font-familly;
+    font-weight: 700;
+  }
 
   &.-rounded-gauche {
     border-top-left-radius: rem(50);
