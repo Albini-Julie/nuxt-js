@@ -1,6 +1,11 @@
 <script setup>
 import Title from "./components/elements/e_title.vue";
 
+const { client } = usePrismic();
+const { data: home, error } = await useAsyncData("home", () =>
+  client.getSingle("homepage")
+);
+
 const props = defineProps({
   error: Object,
 });
@@ -8,7 +13,7 @@ const props = defineProps({
 
 <template>
   <div class="p-error">
-    <Header />
+    <Header :content="home.data.header" :src="home.data.header_image.url" />
     <Title
       class="p-error__title"
       title="h3"
