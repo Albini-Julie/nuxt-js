@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 /*useHead({
   title: "Recettes App",
   meta: [{ name: "description", content: "Le sites de toutes vos recettes" }],
@@ -7,6 +7,7 @@
   },
   script: [{ innerHTML: "console.log('Bienvenue sur Recette App')" }],
 });*/
+
 useSeoMeta({
   title: "Recettes App",
   ogTitle: "Recettes App",
@@ -15,9 +16,18 @@ useSeoMeta({
   ogImage: "/logo.png",
   twitterCard: "summary_large_image",
 });
+
+const { client } = usePrismic();
+const { data: home } = await useAsyncData("home", () =>
+  client.getSingle("homepage")
+);
+
+console.log(home);
 </script>
 
 <template>
+  <PrismicRichText v-if="home" v-bind="{ field: home.data.hero_title }" />
+
   <div class="e-bloc">
     <div class="e-bloc__intro">
       <Intro />
