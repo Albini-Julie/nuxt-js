@@ -8,6 +8,17 @@
   script: [{ innerHTML: "console.log('Bienvenue sur Recette App')" }],
 });*/
 
+const { client } = usePrismic();
+const { data: home, error } = await useAsyncData("home", () =>
+  client.getSingle("homepage")
+);
+/*if (!home.value || error.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "La page d'accueil est introuvable",
+  });
+}*/
+
 useSeoMeta({
   title: "Recettes App",
   ogTitle: "Recettes App",
@@ -16,11 +27,6 @@ useSeoMeta({
   ogImage: "/logo.png",
   twitterCard: "summary_large_image",
 });
-
-const { client } = usePrismic();
-const { data: home } = await useAsyncData("home", () =>
-  client.getSingle("homepage")
-);
 
 console.log(home);
 </script>

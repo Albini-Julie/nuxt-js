@@ -1,22 +1,28 @@
 <script setup>
 import { useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
-import { client } from "@/utils/axios";
+//import { client } from "@/utils/axios";
 import Bouton from "../scss/components/elements/e-Bouton.vue";
 import Title from "../scss/components/elements/e_title.vue";
 
 const route = useRoute();
 
-const recipe = ref({});
+//const recipe = ref({});
 
-const getRecipes = async () => {
+const env = useRuntimeConfig();
+
+const { data: recipe } = await useAsyncData("recipe", async () => {
+  return $fetch(env.public.apiUrl + `/recipes/${route.params.id}`);
+});
+
+/*const getRecipes = async () => {
   const response = await client.get(`/recipes/${route.params.id}`);
   return response.data;
 };
 
-onMounted(async () => {
+/*onMounted(async () => {
   recipe.value = await getRecipes();
-});
+});*/
 </script>
 
 <template>
