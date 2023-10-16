@@ -17,6 +17,8 @@ export default defineNuxtConfig({
       path:'~/components',
       pathPrefix: false
     }],
+    modules: ['@nuxtjs/prismic'],
+    prismic: { endpoint: process.env.NUXT_PRISMIC_ENDPOINT },
     css:['@/scss/main.scss'],
     vite: {
       css: {
