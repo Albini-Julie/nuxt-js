@@ -1,21 +1,21 @@
 <script setup>
 //import des éléments utiles au codage
-import { computed } from 'vue'
+import { computed } from "vue";
 
 //Création des propriété de l'élément
 const props = defineProps({
   title: String,
-  content: String
-})
+  content: String,
+});
 
 //Création d'une constante className qui return un nom de classe en fonction de la valeur de la propriété title
 const className = computed(() => ({
-  h1: props.title === 'h1',
-  h2: props.title === 'h2',
-  h3: props.title === 'h3',
-  h4: props.title === 'h4',
-  h5: props.title === 'h5'
-}))
+  h1: props.title === "h1",
+  h2: props.title === "h2",
+  h3: props.title === "h3",
+  h4: props.title === "h4",
+  h5: props.title === "h5",
+}));
 </script>
 
 <template>
