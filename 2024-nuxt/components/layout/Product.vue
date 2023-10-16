@@ -4,18 +4,27 @@ import { onMounted, ref, computed } from "vue";
 import GrandCards from "../../scss/components/GrandCard.vue";
 import Bouton from "../../scss/components/elements/e-Bouton.vue";
 import TitlesSections from "../../scss/components/titles_section.vue";
-import { client } from "@/utils/axios";
+//import { client } from "@/utils/axios";
 
-const recipes = ref([]);
+const env = useRuntimeConfig();
 
-const getRecipes = async () => {
+const { data: recipes } = await useAsyncData("recipes", async () => {
+  return $fetch(env.public.apiUrl + "/recipes");
+});
+
+//const recipes = ref([]);
+
+/*const getRecipes = async () => {
   const response = await client.get("/recipes");
   return response.data;
-};
+};*/
 
 const gridPage = ref(1);
 
 const jpgRecipes = computed(() => {
+  if (!recipes.value) {
+    return [];
+  }
   return recipes.value.filter((recipe) => recipe.image_url.includes("jpg"));
 });
 
@@ -32,9 +41,9 @@ const seeMoreRecipe = () => {
   gridPage.value++;
 };
 
-onMounted(async () => {
+/*onMounted(async () => {
   recipes.value = await getRecipes();
-});
+});*/
 </script>
 
 <template>

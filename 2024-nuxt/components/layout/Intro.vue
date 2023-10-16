@@ -6,7 +6,13 @@ import Bouton from "../../scss/components/elements/e-Bouton.vue";
 import Icon from "../../scss/components/elements/Bouton_fleche.vue";
 import Fleche from "../../scss/components/icons/icons-elements/fleche_grise.vue";
 import Card from "../../scss/components/PetiteCard.vue";
-import { client } from "@/utils/axios";
+//import { client } from "@/utils/axios";
+
+const env = useRuntimeConfig();
+
+const { data: recipes } = await useAsyncData("recipes", async () => {
+  return $fetch(env.public.apiUrl + "/recipes");
+});
 
 const props = defineProps({
   title: Array,
@@ -14,7 +20,7 @@ const props = defineProps({
   buttons: Array,
 });
 
-const recipes = ref([]);
+/*const recipes = ref([]);*/
 
 const getRecipes = async () => {
   const response = await client.get("/recipes");
@@ -25,9 +31,9 @@ const introRecipes = computed(() => {
   return recipes.value.filter((recipe) => recipe.image_url.includes("png"));
 });
 
-onMounted(async () => {
+/*onMounted(async () => {
   recipes.value = await getRecipes();
-});
+});*/
 </script>
 
 <template>

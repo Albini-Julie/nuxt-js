@@ -20,6 +20,11 @@ export default defineNuxtConfig({
     modules: ['@nuxtjs/prismic'],
     prismic: { endpoint: process.env.NUXT_PRISMIC_ENDPOINT },
     css:['@/scss/main.scss'],
+    runtimeConfig: {
+      public: {
+        apiUrl: ''
+      }
+    },
     vite: {
       css: {
     preprocessorOptions: {
