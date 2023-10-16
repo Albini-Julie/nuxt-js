@@ -2,22 +2,23 @@
 //import des éléments utiles au codage
 import Title from "../../scss/components/elements/e_title.vue";
 import Icon from "../../scss/components/elements/bouton_fleche.vue";
+
+defineProps({
+  content: [],
+  src: String,
+});
 </script>
 
 <template>
   <div class="e-header">
     <!--logo-->
-    <img
-      class="e-header__image"
-      src="/logo.png"
-      alt="logo du site web"
-    />
+    <img class="e-header__image" :src="src" alt="logo du site web" />
     <!--Navigation-->
-    <div class="e-header__navigation">
-      <Title title="h5" content="Home" />
-      <Title title="h5" content="Menu" />
-      <Title title="h5" content="Service" />
-      <Title title="h5" content="Shop" />
+    <div class="e-header__navigation" v-for="i in content">
+      <h5><PrismicRichText :field="i.header_title1" /></h5>
+      <h5><PrismicRichText :field="i.header_title2" /></h5>
+      <h5><PrismicRichText :field="i.header_title3" /></h5>
+      <h5><PrismicRichText :field="i.header_title4" /></h5>
     </div>
     <!--Barre de recherches-->
     <div class="e-header__research">
@@ -71,6 +72,12 @@ import Icon from "../../scss/components/elements/bouton_fleche.vue";
     display: flex;
     justify-content: space-between;
     gap: rem(67);
+
+    h5 {
+      font-size: $regular-font-size;
+      font-family: $primary-font-familly;
+      font-weight: 700;
+    }
   }
 
   &__image {

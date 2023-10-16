@@ -28,6 +28,9 @@ const getRecipes = async () => {
 };
 
 const introRecipes = computed(() => {
+  if (!recipes.value) {
+    return [];
+  }
   return recipes.value.filter((recipe) => recipe.image_url.includes("png"));
 });
 
