@@ -26,11 +26,14 @@ console.log(home);
 </script>
 
 <template>
-  <PrismicRichText v-if="home" v-bind="{ field: home.data.hero_title }" />
-
   <div class="e-bloc">
     <div class="e-bloc__intro">
-      <Intro />
+      <Intro
+        v-if="home"
+        :title="home.data.hero_title"
+        :text="home.data.hero_text"
+        :buttons="home.data.hero_buttons"
+      />
     </div>
     <div class="e-bloc__infos">
       <Infos />

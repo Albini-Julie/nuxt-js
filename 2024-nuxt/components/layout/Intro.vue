@@ -8,6 +8,12 @@ import Fleche from "../../scss/components/icons/icons-elements/fleche_grise.vue"
 import Card from "../../scss/components/PetiteCard.vue";
 import { client } from "@/utils/axios";
 
+const props = defineProps({
+  title: Array,
+  text: Array,
+  buttons: Array,
+});
+
 const recipes = ref([]);
 
 const getRecipes = async () => {
@@ -35,7 +41,7 @@ onMounted(async () => {
           <img src="/livreur.jpg" alt="icon d'un livreur" />
         </div>
       </div>
-      <!--Titre-->
+      <!--Titre
       <div class="e-intro__title">
         <Title title="h1" content="The Fastest" />
         <Title title="h1" content="Delivery" />
@@ -47,19 +53,43 @@ onMounted(async () => {
             content="Your City"
           />
         </div>
+      </div>-->
+      <div class="e-intro__title">
+        <PrismicRichText :field="title" />
       </div>
-      <!--Description-->
+      <!--Description
       <p class="e-intro__description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo, sed
         proin amet a vestibulum enim volutpat lacus. Volutpat arcu sit sed
         tortor etiam volutpat ipsum.
-      </p>
-      <!--Boutons-->
+      </p>-->
+      <div class="e-intro__description">
+        <PrismicRichText :field="text" />
+      </div>
+      <!--Boutons
       <div class="e-intro__boutons">
         <Bouton variant="default">Order now</Bouton>
         <div class="e-intro__boutons">
           <Icon icon="action" couleur="white" size="big" />
           <Title title="h4" content="Order Process" />
+        </div>
+      </div>-->
+      <div class="e-intro__boutons">
+        <div v-for="(i, index) in buttons">
+          <Bouton
+            :href="i.button_link.url"
+            :variant="buttons.button_type"
+            v-if="i.button_type === 'default'"
+          >
+            {{ i.button_label }}
+          </Bouton>
+
+          <a v-else class="e-intro__link" :href="i.button_link.url">
+            <div class="e-intro__boutons">
+              <Icon icon="action" couleur="white" size="big" />
+              <Title title="h4" :content="i.button_label" />
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -85,7 +115,7 @@ onMounted(async () => {
   </main>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .e-intro {
   align-items: center;
   display: flex;
@@ -97,7 +127,21 @@ onMounted(async () => {
     justify-content: space-between;
     gap: rem(15);
   }
+
+  &__link {
+    text-decoration: none;
+    color: $black;
+  }
+
   &__title {
+    font-size: $giant-font-size;
+    font-family: $primary-font-familly;
+    font-weight: 700;
+
+    strong {
+      color: $primary-color;
+    }
+
     &.--end {
       display: flex;
       gap: rem(20);
