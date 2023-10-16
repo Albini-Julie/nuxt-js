@@ -1,7 +1,14 @@
+<script setup>
+const { client } = usePrismic();
+const { data: home, error } = await useAsyncData("home", () =>
+  client.getSingle("homepage")
+);
+</script>
+
 <template>
   <main class="layout">
     <header class="layout__header">
-      <Header />
+      <Header :content="home.data.header" :src="home.data.header_image.url" />
     </header>
     <corps>
       <NuxtPage />
