@@ -14,11 +14,14 @@ defineProps({
     <!--logo-->
     <img class="e-header__image" :src="src" alt="logo du site web" />
     <!--Navigation-->
-    <div class="e-header__navigation" v-for="i in content">
-      <h5><PrismicRichText :field="i.header_title1" /></h5>
-      <h5><PrismicRichText :field="i.header_title2" /></h5>
-      <h5><PrismicRichText :field="i.header_title3" /></h5>
-      <h5><PrismicRichText :field="i.header_title4" /></h5>
+    <div class="e-header__navigation">
+      <div v-for="i in content">
+        <a class="e-header__link" :href="i.header_link.url">
+          <h5>
+            <PrismicRichText :field="i.header_title" />
+          </h5>
+        </a>
+      </div>
     </div>
     <!--Barre de recherches-->
     <div class="e-header__research">
@@ -66,6 +69,11 @@ defineProps({
     &:focus {
       outline: none;
     }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $black;
   }
 
   &__navigation {
