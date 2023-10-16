@@ -53,7 +53,7 @@ const className2 = computed(() => ({
   flex-direction: column;
   padding-top: rem(28);
   padding-bottom: rem(28);
-  min-width: rem(520);
+  min-width: rem(515);
 
   h5 {
     font-size: $regular-font-size;
