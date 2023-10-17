@@ -2,6 +2,12 @@
 //import des éléments utiles au codage
 import Bouton from "../../scss/components/elements/e-Bouton.vue";
 import Title from "../../scss/components/elements/e_title.vue";
+
+defineProps({
+  title: [],
+  text: [],
+  image: [],
+});
 </script>
 
 <template>
@@ -10,20 +16,12 @@ import Title from "../../scss/components/elements/e_title.vue";
     <div class="e-bloc__fond"></div>
     <!--Image du burger-->
     <div class="e-bloc__image">
-      <img src="/burger.png" alt="image d'un burger" />
+      <img :src="image.url" :alt="image.alt" />
     </div>
     <!--Titre et description-->
     <div class="e-bloc__infos">
-      <Title
-        class="e-bloc__title"
-        title="h3"
-        content="Subcribe To Our Newsletter"
-      />
-      <p class="e-bloc__text">
-        Lorem ipsum dolor sit amet, consectetur adipidrscing elit. Purus mauris
-        sem sed urna venenatis vivamus. Egestas in velit nulla viverra turpis id
-        ac. Amet faucibus tempus.
-      </p>
+      <h3><PrismicRichText class="e-bloc__title" :field="title" /></h3>
+      <PrismicRichText class="e-bloc__text" :field="text" />
       <!--Champs d'inscription-->
       <div class="e-bloc__champs">
         <!--input-->
@@ -69,6 +67,11 @@ import Title from "../../scss/components/elements/e_title.vue";
     flex-direction: column;
     gap: rem(15);
     z-index: 50;
+    h3 {
+      font-size: $big-font-size;
+      font-family: $primary-font-familly;
+      font-weight: 700;
+    }
   }
 
   &__text {

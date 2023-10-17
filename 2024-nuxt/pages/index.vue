@@ -77,7 +77,11 @@ console.log(home);
       />
     </div>
     <div class="e-bloc__newsletter">
-      <Newsletter />
+      <Newsletter
+        :title="home.data.newslettercontent_title"
+        :text="home.data.newslettercontent_text"
+        :image="home.data.newsletter_image"
+      />
     </div>
   </div>
 </template>
