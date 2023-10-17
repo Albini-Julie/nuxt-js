@@ -13,7 +13,11 @@ const props = defineProps({
 
 <template>
   <div class="p-error">
-    <Header :content="home.data.header" :src="home.data.header_image.url" />
+    <Header
+      :content="home.data.header"
+      :alt="home.data.header_image.alt"
+      :src="home.data.header_image.url"
+    />
     <Title
       class="p-error__title"
       title="h3"

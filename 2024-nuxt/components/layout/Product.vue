@@ -44,12 +44,22 @@ const seeMoreRecipe = () => {
 /*onMounted(async () => {
   recipes.value = await getRecipes();
 });*/
+
+defineProps({
+  tag: [],
+  title: [],
+  button: [],
+});
 </script>
 
 <template>
   <div class="e-bloc">
     <!--Titles-->
-    <TitlesSections contentTitle="Most Popular Items" contentP="Product" />
+    <TitlesSections
+      class="e-bloc__titles"
+      :contentTitle="title"
+      :contentP="tag"
+    />
     <!--Cards-->
     <div class="e-bloc__cards">
       <GrandCards
@@ -64,16 +74,16 @@ const seeMoreRecipe = () => {
       />
     </div>
     <!--Boutons-->
-    <div class="e-bloc__bouton">
+    <div class="e-bloc__bouton" v-for="i in button">
       <Bouton
         v-if="moreRecipesToShow"
         @click="seeMoreRecipe"
-        size="regular"
-        variant="rounded"
-        icon="true"
+        :size="i.button_size"
+        :variant="i.button_variant"
+        :icon="i.button_icon"
       >
-        See More Product</Bouton
-      >
+        <PrismicRichText :field="i.button_text"
+      /></Bouton>
     </div>
   </div>
 </template>

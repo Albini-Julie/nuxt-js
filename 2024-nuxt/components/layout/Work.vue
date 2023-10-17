@@ -2,6 +2,18 @@
 import titlesSections from "../../scss/components/titles_section.vue";
 import Title from "../../scss/components/elements/e_title.vue";
 import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue";
+
+const env = useRuntimeConfig();
+
+const { data: recipes } = await useAsyncData("recipes", async () => {
+  return $fetch(env.public.apiUrl + "/recipes");
+});
+
+defineProps({
+  items: [],
+  tag: [],
+  title: [],
+});
 </script>
 
 <template>
@@ -9,61 +21,47 @@ import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue"
     <!--Titles-->
     <titlesSections
       class="e-bloc__titles"
-      contentTitle="Food Us An Important Part Of A Balanced Diet"
-      contentP="How to work"
+      :contentTitle="title"
+      :contentP="tag"
     />
     <div class="e-bloc__sections">
-      <!--Section ordinateur-->
-      <div class="e-bloc__sections--1">
-        <!--Image-->
-        <img
-          class="e-bloc__image --haut"
-          src="/ordinateur.jpg"
-          alt="image ordinateur"
-        />
-        <!--Titre-->
-        <Title class="e-bloc__title" title="h4" content="choose" />
-        <!--Description-->
-        <p class="e-bloc__text">
-          Do you want to lose weight, exercise, adhere to a therapeutic diet?
-          Our dietitian will help you with choosing the right program!
-        </p>
-      </div>
-      <!--Lignes-->
-      <ligne class="e-bloc__ligne --inverse" />
-      <!--Section food-->
-      <div class="e-bloc__sections--1">
-        <!--Titre-->
-        <Title
-          class="e-bloc__title --center"
-          title="h4"
-          content="prepare food"
-        />
-        <!--Description-->
-        <p class="e-bloc__text">
-          Do you want to lose weight, exercise, adhere to a therapeutic diet?
-          Our dietitian will help you with choosing the right program!
-        </p>
-        <!--Image-->
-        <img
-          class="e-bloc__image --bas"
-          src="/food.jpg"
-          alt="image nourriture"
-        />
-      </div>
-      <!--Lignes-->
-      <ligne class="e-bloc__ligne" />
-      <!--Section sac-->
-      <div class="e-bloc__sections--1 --end">
-        <!--image-->
-        <img class="e-bloc__image --haut" src="/bag.jpg" alt="image sacs" />
-        <!--Titre-->
-        <Title class="e-bloc__title" title="h4" content="deliver" />
-        <!--Description-->
-        <p class="e-bloc__text">
-          Do you want to lose weight, exercise, adhere to a therapeutic diet?
-          Our dietitian will help you with choosing the right program!
-        </p>
+      <div v-for="(i, index) in items">
+        <!--Section ordinateur-->
+        <div class="e-bloc__sections--1">
+          <!--Lignes-->
+          <ligne v-if="index === 2" class="e-bloc__ligne" />
+          <!--Image-->
+          <img
+            v-if="index === 0 || index === 2"
+            class="e-bloc__image --haut"
+            :src="i.work_image.url"
+            :alt="i.work_image.alt"
+          />
+          <!--Titre-->
+          <h4>
+            <PrismicRichText
+              :class="[
+                'e-bloc__title',
+                { '--end': index === 2 },
+                { '--center': index === 1 },
+              ]"
+              :field="i.work_title"
+            />
+          </h4>
+          <!--Description-->
+          <PrismicRichText
+            :class="['e-bloc__text', { '--end': index === 2 }]"
+            :field="i.work_text"
+          />
+          <img
+            v-if="index === 1"
+            class="e-bloc__image --bas"
+            :src="i.work_image.url"
+            :alt="i.work_image.alt"
+          />
+          <!--Lignes-->
+          <ligne v-if="index === 0" class="e-bloc__ligne --inverse" />
+        </div>
       </div>
     </div>
   </div>
@@ -77,12 +75,12 @@ import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue"
 
   &__ligne {
     position: absolute;
-    margin-left: rem(888);
-    margin-top: rem(7);
-
+    right: rem(120);
+    margin-top: rem(10);
     &.--inverse {
       transform: scaleX(-1);
-      margin-left: rem(120);
+      left: rem(120);
+      top: rem(0);
     }
   }
 
@@ -91,6 +89,9 @@ import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue"
     margin-bottom: rem(25);
     &.--center {
       text-align: center;
+    }
+    &.--end {
+      text-align: end;
     }
   }
 
@@ -107,17 +108,26 @@ import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue"
   &__sections {
     display: flex;
     gap: rem(223);
-    &--1 {
+    position: relative;
+    h4 {
+      font-size: $medium-font-size;
+      font-family: $primary-font-familly;
+      font-weight: 700;
+    }
+    /*&--1 {
       display: flex;
       flex-direction: column;
       &.--end {
         text-align: end;
       }
-    }
+    }*/
   }
 
   &__text {
     font-weight: 500;
+    &.--end {
+      text-align: end;
+    }
   }
 }
 </style>

@@ -1,12 +1,21 @@
 <script setup>
-import BasicCards from '../../scss/components/card_basic.vue'
-import titleServices from '../../scss/components/titles_section.vue'
+import BasicCards from "../../scss/components/card_basic.vue";
+import titlesSections from "../../scss/components/titles_section.vue";
+
+defineProps({
+  tag: [],
+  title: [],
+});
 </script>
 
 <template>
   <div class="e-bloc">
     <!--Titres-->
-    <titleServices contentTitle="Why Choose Our Favorite Food" contentP="Services" />
+    <titlesSections
+      class="e-bloc__titles"
+      :contentTitle="title"
+      :contentP="tag"
+    />
     <!--Cards-->
     <div class="e-bloc__cards">
       <BasicCards

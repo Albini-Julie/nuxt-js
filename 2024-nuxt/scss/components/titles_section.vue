@@ -1,16 +1,14 @@
 <script setup>
-import Title from '../components/elements/e_title.vue'
-
 defineProps({
-  contentTitle: String,
-  contentP: String
-})
+  contentTitle: [],
+  contentP: [],
+});
 </script>
 
 <template>
   <div class="e-bloc">
-    <p class="e-bloc__text">{{ contentP }}</p>
-    <Title title="h3" :content="contentTitle" />
+    <PrismicRichText class="e-bloc__text" :field="contentP" />
+    <h3><PrismicRichText :field="contentTitle" /></h3>
   </div>
 </template>
 
@@ -19,6 +17,12 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h3 {
+    font-size: $big-font-size;
+    font-family: $primary-font-familly;
+    font-weight: 700;
+  }
   &__text {
     font-weight: 500;
     color: $primary-color;

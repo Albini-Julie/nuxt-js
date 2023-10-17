@@ -2,14 +2,20 @@
 import titlesSections from "../../scss/components/titles_section.vue";
 import Icon from "../../scss/components/elements/Bouton_fleche.vue";
 import Title from "../../scss/components/elements/e_title.vue";
+
+defineProps({
+  tag: [],
+  title: [],
+});
 </script>
 
 <template>
   <div class="e-bloc">
     <!--Titles-->
     <titlesSections
-      contentTitle="Our Happy Client Says"
-      contentP="Testimonials"
+      class="e-bloc__titles"
+      :contentTitle="title"
+      :contentP="tag"
     />
     <!--Contenu-->
     <div class="e-bloc__section">
@@ -31,11 +37,7 @@ import Title from "../../scss/components/elements/e_title.vue";
         <div class="e-bloc__profil">
           <div class="e-bloc__profil --int">
             <!--Photo-->
-            <img
-              class="e-bloc__image"
-              src="/client.jpg"
-              alt="image client"
-            />
+            <img class="e-bloc__image" src="/client.jpg" alt="image client" />
             <div>
               <!--Nom du client-->
               <Title title="h5" content="Willians Jhone" />
