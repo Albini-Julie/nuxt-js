@@ -2,6 +2,10 @@
 //import des éléments utiles au codage
 import Icon from "../elements/Bouton_fleche.vue";
 
+import { useGlobalStore } from "@/stores/global";
+
+const store = useGlobalStore();
+
 defineProps({
   content: [],
   src: String,
@@ -28,6 +32,11 @@ defineProps({
       <Icon couleur="default" icon="loupe" size="small" />
       <input class="e-header__input" type="text" placeholder="Search" />
       <div class="e-header__icon">
+        <div class="e-header__data">
+          {{ store.cart.length }}
+          <div class="e-header__cart">recettes : {{ store.cart }}</div>
+        </div>
+
         <Icon couleur="default" icon="achat" size="small" />
       </div>
     </div>
@@ -41,8 +50,44 @@ defineProps({
   justify-content: space-between;
 
   &__icon {
-    padding-left: rem(33);
+    display: flex;
+    position: relative;
+    gap: rem(1);
+    align-items: center;
+    padding-left: rem(30);
     border-left: solid 1px $gray;
+    z-index: 0;
+  }
+
+  &__data {
+    position: absolute;
+    color: $white;
+    background-color: $primary-color;
+    padding: rem(2) rem(5);
+    border-radius: 100%;
+    font-weight: 500;
+    display: inline-block;
+    font-size: $small-font-size;
+    box-shadow: 0px 0px 22px $primary-color;
+    top: 0%;
+    right: 0%;
+    z-index: 50;
+
+    &:hover {
+      display: flex;
+      padding: rem(5) rem(5);
+      border-radius: rem(5);
+      gap: rem(5);
+      width: max-content;
+    }
+
+    &:hover .e-header__cart {
+      display: block;
+    }
+  }
+
+  &__cart {
+    display: none;
   }
 
   &__research {

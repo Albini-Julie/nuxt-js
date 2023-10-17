@@ -4,15 +4,32 @@ import Bouton from "./elements/e-Bouton.vue";
 import Title from "./elements/e_title.vue";
 import icon_etoile from "../components/icons/icons-elements/icon_etoile_orange.vue";
 
+import { useGlobalStore } from "@/stores/global";
+
 //définition des propriété des l'élément
-defineProps({
+const props = defineProps({
   image: String,
   description: String,
   content: String,
   note: String,
   prix: String,
   href: String,
+  id: Number,
 });
+
+const store = useGlobalStore();
+
+const buttonLabel = computed(() =>
+  store.isInCart(props.id) ? "Remove from card" : "Add to card"
+);
+
+const onClick = () => {
+  if (store.isInCart(props.id)) {
+    store.removeFromCart(props.id);
+  } else {
+    store.addToCart(props.id);
+  }
+};
 </script>
 
 <template>
@@ -38,7 +55,10 @@ defineProps({
           <RouterLink :to="href">
             <Bouton class="button -small -rounded">Read</Bouton>
           </RouterLink>
-          <Bouton class="button -small -rounded">Add To Cart</Bouton>
+
+          <Bouton @click="onClick(id)" class="button -small -rounded">
+            {{ buttonLabel }}
+          </Bouton>
         </div>
         <p>${{ prix }}</p>
       </div>
