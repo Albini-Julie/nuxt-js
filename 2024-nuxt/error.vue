@@ -6,6 +6,15 @@ const { data: home, error } = await useAsyncData("home", () =>
   client.getSingle("homepage")
 );
 
+useSeoMeta({
+  title: home.value.data.meta_title,
+  ogTitle: home.value.data.meta_text,
+  description: home.value.data.meta_description,
+  ogDescription: home.value.data.meta_description,
+  ogImage: home.value.data.meta_image.url,
+  twitterCard: "summary_large_image",
+});
+
 const props = defineProps({
   error: Object,
 });

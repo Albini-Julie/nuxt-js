@@ -20,11 +20,11 @@ const { data: home, error } = await useAsyncData("home", () =>
 }*/
 
 useSeoMeta({
-  title: "Recettes App",
-  ogTitle: "Recettes App",
-  description: "Le sites de toutes vos recettes",
-  ogDescription: "Le sites de toutes vos recettes",
-  ogImage: "/logo.png",
+  title: home.value.data.meta_title,
+  ogTitle: home.value.data.meta_text,
+  description: home.value.data.meta_description,
+  ogDescription: home.value.data.meta_description,
+  ogImage: home.value.data.meta_image.url,
   twitterCard: "summary_large_image",
 });
 
