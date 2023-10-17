@@ -3,9 +3,15 @@ import titlesSections from "../../scss/components/titles_section.vue";
 import Icon from "../../scss/components/elements/Bouton_fleche.vue";
 import Title from "../../scss/components/elements/e_title.vue";
 
+const { client } = usePrismic();
+const { data: home, error } = await useAsyncData("home", () =>
+  client.getSingle("homepage")
+);
+
 defineProps({
   tag: [],
   title: [],
+  cards: [],
 });
 </script>
 
@@ -20,7 +26,7 @@ defineProps({
     <!--Contenu-->
     <div class="e-bloc__section">
       <!--Partie client-->
-      <div class="e-bloc__client">
+      <div class="e-bloc__client" v-for="i in cards">
         <div style="display: flex; justify-content: center">
           <div class="e-bloc__blanc"></div>
         </div>
@@ -37,20 +43,22 @@ defineProps({
         <div class="e-bloc__profil">
           <div class="e-bloc__profil --int">
             <!--Photo-->
-            <img class="e-bloc__image" src="/client.jpg" alt="image client" />
+            <img
+              class="e-bloc__image"
+              :src="i.cards_image.url"
+              :alt="i.cards_image.alt"
+            />
             <div>
               <!--Nom du client-->
-              <Title title="h5" content="Willians Jhone" />
-              <p class="e-bloc__text">CEO & Co-Founder</p>
+              <h5><PrismicRichText :field="i.cards_title" /></h5>
+              <PrismicRichText
+                :field="i.cards_description"
+                class="e-bloc__text"
+              />
             </div>
           </div>
           <!--Description du client-->
-          <p class="e-bloc__description">
-            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet nisl
-            tincidunt adipiscing dictumst blandit hac. Lectus cras velit sed
-            dignissim ac, aliquet. Metus egestas habitant feugiat neque ultrices
-            nunc, dolor egestas mus.”
-          </p>
+          <PrismicRichText :field="i.cards_text" class="e-bloc__description" />
         </div>
         <!--Icon fleche-->
         <div class="e-bloc__icon">
@@ -63,7 +71,10 @@ defineProps({
         </div>
       </div>
       <!--Image fast food-->
-      <img src="/fastfoodMenu.jpg" alt="image d'un menu de fast food" />
+      <img
+        :src="home.data.testimonials_image.url"
+        :alt="home.data.testimonials_image.alt"
+      />
     </div>
   </div>
 </template>
@@ -137,6 +148,11 @@ defineProps({
     align-items: center;
     position: relative;
 
+    h5 {
+      font-size: $regular-font-size;
+      font-family: $primary-font-familly;
+      font-weight: 700;
+    }
     &.profil {
     }
   }
