@@ -1,7 +1,6 @@
 <script setup>
-import titlesSections from "../../scss/components/titles_section.vue";
-import Title from "../../scss/components/elements/e_title.vue";
-import ligne from "../../scss/components/icons/icons-elements/lignes_orange.vue";
+import titlesSections from "../titles_section.vue";
+import ligne from "../icons/icons-elements/lignes_orange.vue";
 
 const env = useRuntimeConfig();
 

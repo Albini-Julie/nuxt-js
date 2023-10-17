@@ -1,6 +1,6 @@
 <script setup>
 //import des éléments utiles au codage
-import CardInfos from "../../scss/components/card_infos.vue";
+import CardInfos from "../card_infos.vue";
 
 const props = defineProps({
   cards: [],

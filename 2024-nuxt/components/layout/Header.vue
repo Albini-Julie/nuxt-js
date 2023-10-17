@@ -1,6 +1,6 @@
 <script setup>
 //import des éléments utiles au codage
-import Icon from "../../scss/components/elements/bouton_fleche.vue";
+import Icon from "../elements/Bouton_fleche.vue";
 
 defineProps({
   content: [],

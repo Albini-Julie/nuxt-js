@@ -1,7 +1,6 @@
 <script setup>
 //import des éléments utiles au codage
-import Bouton from "../../scss/components/elements/e-Bouton.vue";
-import Title from "../../scss/components/elements/e_title.vue";
+import Bouton from "../elements/e-Bouton.vue";
 
 defineProps({
   title: [],

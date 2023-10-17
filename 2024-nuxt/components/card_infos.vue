@@ -1,7 +1,7 @@
 <script setup>
 //import des éléments utiles au codage
 import { computed } from "vue";
-import Icon from "../components/elements/bouton_fleche.vue";
+import Icon from "./elements/Bouton_fleche.vue";
 import Title from "../components/elements/e_title.vue";
 
 //Création des propriétés de l'élément

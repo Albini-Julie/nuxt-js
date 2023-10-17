@@ -1,7 +1,7 @@
 <script setup>
 //import des éléments utiles au codage
-import Title from './elements/e_title.vue'
-import Bouton from './elements/bouton_fleche.vue'
+import Title from "./elements/e_title.vue";
+import Bouton from "./elements/Bouton_fleche.vue";
 
 //Définition des propriétés de l"élément
 defineProps({
@@ -9,8 +9,8 @@ defineProps({
   description: String,
   content: String,
   text: String,
-  prix: String
-})
+  prix: String,
+});
 </script>
 
 <template>
@@ -29,7 +29,9 @@ defineProps({
     <img class="e-card__image" :src="image" :alt="description" />
     <Title class="e-card__titre" title="h4" :content="content" />
     <p class="e-card__text">{{ text }}</p>
-    <p class="e-card__text"><span class="e--card__text --span">$</span>{{ prix }}</p>
+    <p class="e-card__text">
+      <span class="e--card__text --span">$</span>{{ prix }}
+    </p>
     <div class="e-card__boutons">
       <Bouton size="small" couleur="black" icon="fleche_suivant" />
       <Bouton size="small" couleur="white" icon="" />

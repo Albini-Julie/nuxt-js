@@ -1,11 +1,11 @@
 <script setup>
 //Import des éléments utiles au codage
 import { onMounted, ref, computed } from "vue";
-import Title from "../../scss/components/elements/e_title.vue";
-import Bouton from "../../scss/components/elements/e-Bouton.vue";
-import Icon from "../../scss/components/elements/Bouton_fleche.vue";
-import Fleche from "../../scss/components/icons/icons-elements/fleche_grise.vue";
-import Card from "../../scss/components/PetiteCard.vue";
+import Title from "../elements/e_title.vue";
+import Bouton from "../elements/e-Bouton.vue";
+import Icon from "../elements/Bouton_fleche.vue";
+import Fleche from "../icons/icons-elements/fleche_grise.vue";
+import Card from "../PetiteCard.vue";
 //import { client } from "@/utils/axios";
 
 const env = useRuntimeConfig();
