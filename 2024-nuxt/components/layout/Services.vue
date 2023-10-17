@@ -5,6 +5,7 @@ import titlesSections from "../../scss/components/titles_section.vue";
 defineProps({
   tag: [],
   title: [],
+  cards: [],
 });
 </script>
 
@@ -18,33 +19,15 @@ defineProps({
     />
     <!--Cards-->
     <div class="e-bloc__cards">
-      <BasicCards
-        content="Healthy Food"
-        text="But I must explain to you how all this
-mistaken idea of denouncing pleasur and
-prasising pain was bron."
-        variantIcon="couverts_croix"
-        couleurIcon="orange_clair"
-        variantCard="bordure"
-      ></BasicCards>
-      <BasicCards
-        content="Qualityfull Food"
-        text="But I must explain to you how all this
-mistaken idea of denouncing pleasur and
-prasising pain was bron."
-        variantIcon="couverts"
-        couleurIcon="orange_clair"
-        variantCard="ombre"
-      ></BasicCards>
-      <BasicCards
-        content="Fast Delivery"
-        text="But I must explain to you how all this
-mistaken idea of denouncing pleasur and
-prasising pain was bron."
-        variantIcon="camion"
-        couleurIcon="orange_clair"
-        variantCard="bordure"
-      ></BasicCards>
+      <div v-for="(i, index) in cards">
+        <BasicCards
+          :content="i.cards_title"
+          :text="i.cards_text"
+          :variantIcon="i.cards_icon"
+          couleurIcon="orange_clair"
+          :variantCard="index === 1 ? 'ombre' : 'bordure'"
+        />
+      </div>
     </div>
   </div>
 </template>
