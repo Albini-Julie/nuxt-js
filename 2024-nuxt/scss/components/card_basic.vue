@@ -1,8 +1,8 @@
 <script setup>
 //import des éléments utiles au codage
-import { computed } from 'vue'
-import Title from '../components/elements/e_title.vue'
-import Icon from '../components/elements/Bouton_fleche.vue'
+import { computed } from "vue";
+import Title from "../components/elements/e_title.vue";
+import Icon from "../components/elements/Bouton_fleche.vue";
 
 //Création des propriétés de l'éléments
 const props = defineProps({
@@ -11,14 +11,14 @@ const props = defineProps({
   couleurIcon: String,
   sizeIcon: String,
   variantIcon: String,
-  variantCard: String
-})
+  variantCard: String,
+});
 
 //Création d'une constante className qui va retourner un nom de class différent selon la valeur de la propriété variantCard
 const className = computed(() => ({
-  ' -bordure': props.variantCard === 'bordure',
-  ' -ombre': props.variantCard === 'ombre'
-}))
+  " -bordure": props.variantCard === "bordure",
+  " -ombre": props.variantCard === "ombre",
+}));
 </script>
 
 <template>
@@ -32,8 +32,8 @@ const className = computed(() => ({
   - {{ text }} le p prend la valeur de la propriété text-->
   <div class="bloc" :class="className">
     <Icon :couleur="couleurIcon" size="big" :icon="variantIcon" />
-    <Title title="h4" :content="content"></Title>
-    <p>{{ text }}</p>
+    <h4><PrismicRichText :field="content" /></h4>
+    <PrismicRichText :field="text" />
   </div>
 </template>
 
@@ -50,6 +50,12 @@ const className = computed(() => ({
   padding: rem(103) rem(52);
   text-align: center;
   width: fit-content;
+
+  h4 {
+    font-size: $medium-font-size;
+    font-family: $primary-font-familly;
+    font-weight: 700;
+  }
 
   &.-bordure {
     border: solid 1px $gray;

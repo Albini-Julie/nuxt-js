@@ -57,6 +57,7 @@ console.log(home);
         v-if="home"
         :tag="home.data.services_tag"
         :title="home.data.services_title"
+        :cards="home.data.services_cards"
       />
     </div>
     <div class="e-bloc__work">
