@@ -1,7 +1,7 @@
 <script setup>
-import Icon from '../../scss/components/elements/Bouton_fleche.vue'
-import Titre from '../../scss/components/elements/e_title.vue'
-import Bouton from '../../scss/components/elements/Bouton_fleche.vue'
+import Icon from "../elements/Bouton_fleche.vue";
+import Titre from "../elements/e_title.vue";
+import Bouton from "../elements/Bouton_fleche.vue";
 </script>
 
 <template>
@@ -12,8 +12,9 @@ import Bouton from '../../scss/components/elements/Bouton_fleche.vue'
       <img src="/logo.png" />
       <!--Paragraphe-->
       <p class="e-bloc__text --first">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo libero viverra dapibus odio
-        sit malesuada in quis. Arcu tristique elementum viverra integer id.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo libero
+        viverra dapibus odio sit malesuada in quis. Arcu tristique elementum
+        viverra integer id.
       </p>
 
       <!--Réseaux sociaux-->
@@ -64,7 +65,11 @@ import Bouton from '../../scss/components/elements/Bouton_fleche.vue'
       </div>
       <!--Input-->
       <div class="e-bloc__champs">
-        <input class="e-bloc__input" type="text" placeholder="Enter your email...." />
+        <input
+          class="e-bloc__input"
+          type="text"
+          placeholder="Enter your email...."
+        />
         <Bouton icon="fleche" couleur="orange" size="small" />
       </div>
     </div>

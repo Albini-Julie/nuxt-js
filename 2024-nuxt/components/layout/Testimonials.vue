@@ -1,7 +1,6 @@
 <script setup>
-import titlesSections from "../../scss/components/titles_section.vue";
-import Icon from "../../scss/components/elements/Bouton_fleche.vue";
-import Title from "../../scss/components/elements/e_title.vue";
+import titlesSections from "../titles_section.vue";
+import Icon from "../elements/Bouton_fleche.vue";
 
 const { client } = usePrismic();
 const { data: home, error } = await useAsyncData("home", () =>

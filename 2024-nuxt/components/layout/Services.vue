@@ -1,6 +1,6 @@
 <script setup>
-import BasicCards from "../../scss/components/card_basic.vue";
-import titlesSections from "../../scss/components/titles_section.vue";
+import BasicCards from "../card_basic.vue";
+import titlesSections from "../titles_section.vue";
 
 defineProps({
   tag: [],

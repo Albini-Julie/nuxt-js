@@ -2,8 +2,8 @@
 import { useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
 //import { client } from "@/utils/axios";
-import Bouton from "../scss/components/elements/e-Bouton.vue";
-import Title from "../scss/components/elements/e_title.vue";
+import Bouton from "../../components/elements/e-Bouton.vue";
+import Title from "../../components/elements/e_title.vue";
 
 const route = useRoute();
 

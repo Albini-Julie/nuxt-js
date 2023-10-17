@@ -1,9 +1,9 @@
 <script setup>
 //import des éléments utiles au codage
 import { onMounted, ref, computed } from "vue";
-import GrandCards from "../../scss/components/GrandCard.vue";
-import Bouton from "../../scss/components/elements/e-Bouton.vue";
-import TitlesSections from "../../scss/components/titles_section.vue";
+import GrandCards from "../GrandCard.vue";
+import Bouton from "../elements/e-Bouton.vue";
+import TitlesSections from "../titles_section.vue";
 //import { client } from "@/utils/axios";
 
 const env = useRuntimeConfig();
