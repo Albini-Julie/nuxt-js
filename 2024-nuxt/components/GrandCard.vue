@@ -1,8 +1,8 @@
 <script setup>
 //Import des éléments utiles au codage
-import Bouton from './elements/e-Bouton.vue'
-import Title from './elements/e_title.vue'
-import icon_etoile from '../components/icons/icons-elements/icon_etoile_orange.vue'
+import Bouton from "./elements/e-Bouton.vue";
+import Title from "./elements/e_title.vue";
+import icon_etoile from "../components/icons/icons-elements/icon_etoile_orange.vue";
 
 //définition des propriété des l'élément
 defineProps({
@@ -11,8 +11,8 @@ defineProps({
   content: String,
   note: String,
   prix: String,
-  href: String
-})
+  href: String,
+});
 </script>
 
 <template>
@@ -34,9 +34,12 @@ defineProps({
         </div>
       </div>
       <div class="e-card__intro">
-        <RouterLink :to="href">
+        <div class="e-card__intro --button">
+          <RouterLink :to="href">
+            <Bouton class="button -small -rounded">Read</Bouton>
+          </RouterLink>
           <Bouton class="button -small -rounded">Add To Cart</Bouton>
-        </RouterLink>
+        </div>
         <p>${{ prix }}</p>
       </div>
     </div>
@@ -68,6 +71,12 @@ defineProps({
     align-items: center;
     display: flex;
     justify-content: space-between;
+
+    &.--button {
+      display: flex;
+      gap: rem(10);
+      align-items: center;
+    }
 
     &.--note {
       align-items: center;
