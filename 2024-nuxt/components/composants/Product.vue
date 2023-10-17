@@ -71,6 +71,7 @@ defineProps({
         :note="recipe.rating"
         :prix="recipe.price"
         :href="`/recipes/${recipe.recipe_id}`"
+        :id="recipe.recipe_id"
       />
     </div>
     <!--Boutons-->
