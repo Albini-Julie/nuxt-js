@@ -73,6 +73,7 @@ console.log(home);
         v-if="home"
         :tag="home.data.testimonials_tag"
         :title="home.data.testimonials_title"
+        :cards="home.data.testimonials_cards"
       />
     </div>
     <div class="e-bloc__newsletter">
