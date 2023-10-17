@@ -8,7 +8,11 @@ const { data: home, error } = await useAsyncData("home", () =>
 <template>
   <main class="layout">
     <header class="layout__header">
-      <Header :content="home.data.header" :src="home.data.header_image.url" />
+      <Header
+        :content="home.data.header"
+        :src="home.data.header_image.url"
+        :alt="home.data.header_image.alt"
+      />
     </header>
     <corps>
       <NuxtPage />

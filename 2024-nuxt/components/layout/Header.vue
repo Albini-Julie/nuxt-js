@@ -1,18 +1,18 @@
 <script setup>
 //import des éléments utiles au codage
-import Title from "../../scss/components/elements/e_title.vue";
 import Icon from "../../scss/components/elements/bouton_fleche.vue";
 
 defineProps({
   content: [],
   src: String,
+  alt: String,
 });
 </script>
 
 <template>
   <div class="e-header">
     <!--logo-->
-    <img class="e-header__image" :src="src" alt="logo du site web" />
+    <img class="e-header__image" :src="src" :alt="alt" />
     <!--Navigation-->
     <div class="e-header__navigation">
       <div v-for="i in content">

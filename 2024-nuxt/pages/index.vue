@@ -45,16 +45,34 @@ console.log(home);
       <Infos v-if="home" :cards="home.data.infos_card" />
     </div>
     <div class="e-bloc__product">
-      <Product />
+      <Product
+        v-if="home"
+        :tag="home.data.product_tag"
+        :title="home.data.product_title"
+        :button="home.data.product_button"
+      />
     </div>
     <div class="e-bloc__services">
-      <Services />
+      <Services
+        v-if="home"
+        :tag="home.data.services_tag"
+        :title="home.data.services_title"
+      />
     </div>
     <div class="e-bloc__work">
-      <Work />
+      <Work
+        v-if="home"
+        :tag="home.data.work_tag"
+        :title="home.data.work_title"
+        :items="home.data.work"
+      />
     </div>
     <div class="e-bloc__testimonials">
-      <Testimonials />
+      <Testimonials
+        v-if="home"
+        :tag="home.data.testimonials_tag"
+        :title="home.data.testimonials_title"
+      />
     </div>
     <div class="e-bloc__newsletter">
       <Newsletter />
